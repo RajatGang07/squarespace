@@ -27,21 +27,20 @@ handleListClick = (id, title, props) => () => {
   navigation.navigate('UserQuestionsList', { id: id, title: title });
 };
 
-const UserQuestionsScreenView = ({
-  lists,
-  ...props
-}) => (
+const UserQuestionsScreenView = ({ question, ...props }) => {
+  console.log("question in user question : ", question)
+  return (
     <SafeAreaView style={styles.safeAreaContainer}>
       <View style={styles.container}>
-          <View style={styles.headingSubContainer}>
-            <Text style={styles.title}>User Questions</Text>
+        <View style={styles.headingSubContainer}>
+          <Text style={styles.title}>User Questions</Text>
         </View>
         <View style={{ marginTop: 5 }}>
           <Separator />
         </View>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={lists}
+          data={question}
           renderItem={({ item, index }) => (
             <QuestionList item={item} id={item.id} title={item.title} {...props} />
           )}
@@ -49,7 +48,8 @@ const UserQuestionsScreenView = ({
         />
       </View>
     </SafeAreaView>
-  );
+  )
+};
 
 
 const styles = StyleSheet.create({
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding:10
+    padding: 10
   },
   title: {
     color: Colors.darkBlue,
@@ -100,7 +100,7 @@ UserQuestionsScreenView.propTypes = {
 const mapStateToProps = (state) => {
   const question = _get(state, 'question.question');
   return {
-    lists: question,
+    question: question,
   };
 };
 

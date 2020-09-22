@@ -10,10 +10,7 @@ handleListClick = (id, title, props) => () => {
 };
 
 const QuestionList = ({ item, id, title, ...props }) => {
-    console.log(item, "item")
     const relatedTopics = item.relatedTopics;
-    const solutions = item.solutions;
-
     const textData = [];
     relatedTopics.map((item) => {
         textData.push(<View style={{ padding: 5 }} key={item.id}><Text style={styles.relatedTopics}>{item.title}</Text></View>);

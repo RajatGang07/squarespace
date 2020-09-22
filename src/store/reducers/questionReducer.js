@@ -90,18 +90,18 @@ const questionReducer = createReducer(initialState, {
         question[id].solutions = [...question[id].solutions, { id: question[id].solutions.length + 1, ans: answer, rating: 3, solAuthor: 'Tekion', dateSol: '04-12-2019' }];
     },
     ADD_QUESTION: (state, action) => {
+        console.log("state: ", state , "action: ", action)
         let { question } = state;
         const { quest } = action.payload;
         question = [...question, { id: question.length + 1, question: quest, relatedTopics: [], solutions: [], questAuthor: 'Rajat', date: '02-01-2020' }];
+        console.log("question : ", question)
     },
     DELETE_SOLUTION: (state, action) => {
-        console.log("I ma here")
         const { question } = state;
         const { solutionId } = action.payload;
         question.forEach(function (o) {
             o.solutions = o.solutions.filter(s => s.id != solutionId);
         });
-        console.log(question, "question")
     },
 
 });

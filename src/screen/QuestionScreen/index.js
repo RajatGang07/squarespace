@@ -32,7 +32,7 @@ const QuestionScreenView = ({ ...props }) => {
                     numberOfLines={10}
                     style={{ height: 200, backgroundColor: Colors.palePurple }}
                     onChangeText={(text) => setInputText(text)}
-                    onSubmitEditing={() => handleSubmit(inputText, props, setInputText)}
+                    //onSubmitEditing={() => handleSubmit(inputText, props, setInputText)}
                     value={inputText}
                 />
             </View>

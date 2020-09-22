@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import _get from 'lodash.get';
 import _values from 'lodash.values';
-import { AirbnbRating } from 'react-native-ratings';
 
 import {
     View,
@@ -18,9 +17,7 @@ import { Swipeable } from 'react-native-gesture-handler';
 
 import Colors from '../../constant/Color';
 import { addSolution, deleteReview } from '../../store/actions/questionAction';
-import EditReview from '../../component/atom/EditReview';
 import DeleteReview from '../../component/atom/DeleteReview';
-
 
 
 handleSubmit = (inputText, id, props, setInputText) => {
@@ -134,7 +131,7 @@ const DetailQuestion = ({ question, ...props }) => {
                         numberOfLines={10}
                         style={{ height: 200, backgroundColor: Colors.palePurple }}
                         onChangeText={(text) => setInputText(text)}
-                        onSubmitEditing={() => handleSubmit(inputText, id, props, setInputText)}
+                       onSubmitEditing={() => handleSubmit(inputText, id, props, setInputText)}
                         value={inputText}
                     />
                 </View>

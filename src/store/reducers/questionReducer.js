@@ -9,16 +9,16 @@ const initialState = {
             id: 0,
             ans: "You can check on medium",
             rating: 5,
-            solAuthor: 'Rajat',
+            solAuthor: 'RajatG',
             dateSol: '10-12-1992'
         }, {
             id: 1,
             ans: "You can check on stackoverflow",
             rating: 1,
-            solAuthor: 'Rajat',
+            solAuthor: 'RajatG',
             dateSol: '10-12-1992'
         }],
-        questAuthor: 'Rajat',
+        questAuthor: 'RajatG',
         date: '10-12-1992'
     },
     {
@@ -29,7 +29,7 @@ const initialState = {
             id: 2,
             ans: "You can check on medium",
             rating: 4,
-            solAuthor: 'Rajat',
+            solAuthor: 'RajatG',
             dateSol: '10-12-1992'
         }, {
             id: 3,

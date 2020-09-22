@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import _get from 'lodash.get';
-import _values from 'lodash.values';
 
 import {
     View,
     Text,
     StyleSheet,
     FlatList,
-    SafeAreaView,
     TextInput,
-    Image
+    Image,
+    ScrollView
 } from 'react-native';
 import Separator from '../../component/Separator/Separator';
 import { Swipeable } from 'react-native-gesture-handler';
@@ -41,19 +40,19 @@ const DetailQuestion = ({ question, ...props }) => {
     })
 
     return (
-        <SafeAreaView style={styles.container}>
+        <ScrollView style={styles.container}>
             <View style={styles.headingContainer}>
                 <View>
                     <Text style={styles.title}>
                         {quest.question}
                     </Text>
                 </View>
-                <View style={{ flexDirection: "row", marginTop: -10, padding: 5 }}>
+                <View style={styles.relatedTopics}>
                     {textData}
                 </View>
 
             </View>
-            <View style={{ marginTop: 10 }}>
+            <View style={styles.top}>
                 <Separator />
             </View>
 
@@ -63,12 +62,12 @@ const DetailQuestion = ({ question, ...props }) => {
                     </Text>
             </View>
 
-            <View style={{ marginTop: 10 }}>
+            <View style={styles.top}>
                 <Separator />
             </View>
 
             <View style={styles.author}>
-                <View style={{ padding: 5 }}>
+                <View style={styles.padd}>
                     <Image
                         style={styles.tinyLogo}
                         source={{
@@ -76,12 +75,12 @@ const DetailQuestion = ({ question, ...props }) => {
                         }}
                     />
                 </View>
-                <View style={{ padding: 5, flexDirection: "row", top: '30%' }}>
+                <View style={styles.byDate}>
                     <Text>By{' '}</Text><Text style={styles.questAuthor}>{quest.questAuthor}</Text>
                 </View>
 
-                <View style={{ padding: 5, flexDirection: "row", top: '30%' }}>
-                    <Text style={styles.date}>{quest.date}</Text>
+                <View style={styles.byDate}>
+                    <Text>on{' '}</Text><Text style={styles.date}>{quest.date}</Text>
                 </View>
 
             </View>
@@ -93,23 +92,23 @@ const DetailQuestion = ({ question, ...props }) => {
                 <FlatList
                     showsVerticalScrollIndicator={false}
                     data={solutions}
-                    renderItem={({ item, index }) => (
+                    renderItem={({ item }) => (
                         <Swipeable
                             renderRightActions={() => (
                                 <DeleteReview id={id} reviewId={item.id} />
                             )}
                         >
-                            <View style={{ flex: 1, flexDirection: "row", justifyContent: 'space-between', backgroundColor: '#dfbe9f', padding: 5 }} key={item.id}>
-                                <View style={{ padding: 2, flex:1 }}>
+                            <View style={styles.answerParent} key={item.id}>
+                                <View style={{ padding: 2, flex: 1 }}>
                                     <Text style={styles.solutions}>{item.ans}</Text>
                                 </View>
 
-                                <View style={styles.sol}>
-                                    <View style={{ flexDirection: "row",}}>
-                                        <Text style={{justifyContent: 'flex-start'}}>By{' '}</Text><Text style={styles.questAuthor}>{item.solAuthor}{' '}</Text>
+                                <View style={styles.solutionParent}>
+                                    <View style={{ flexDirection: "row", }}>
+                                        <Text style={{ justifyContent: 'flex-start' }}>By{' '}</Text><Text style={styles.questAuthor}>{item.solAuthor}{' '}</Text>
                                     </View>
 
-                                    <View style={{  flexDirection: "row",}}>
+                                    <View style={{ flexDirection: "row" }}>
                                         <Text style={styles.date}>{item.dateSol}</Text>
                                     </View>
 
@@ -131,13 +130,13 @@ const DetailQuestion = ({ question, ...props }) => {
                         numberOfLines={10}
                         style={{ height: 200, backgroundColor: Colors.palePurple }}
                         onChangeText={(text) => setInputText(text)}
-                       onSubmitEditing={() => handleSubmit(inputText, id, props, setInputText)}
+                        onSubmitEditing={() => handleSubmit(inputText, id, props, setInputText)}
                         value={inputText}
                     />
                 </View>
 
             </View>
-        </SafeAreaView>
+        </ScrollView>
     );
 }
 
@@ -152,20 +151,18 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.white
     },
     author: {
-        padding: 5,
+        padding: 10,
         flex: 1,
         backgroundColor: Colors.lightestGrey,
         flexDirection: 'row'
     },
-    sol:{
+    solutionParent: {
         padding: 5,
         flexDirection: 'row',
-        top: '10%'
     },
     tinyLogo: {
         width: 25,
         height: 25,
-        top: '30%'
     },
     title: {
         color: Colors.darkBlue,
@@ -209,7 +206,12 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: Colors.grey,
         justifyContent: 'flex-end'
-    }
+    },
+    byDate: { padding: 5, flexDirection: "row", top: '10%' },
+    relatedTopics: { flexDirection: "row", padding: 5 },
+    top: { marginTop: 10 },
+    padd: { padding: 5 },
+    answerParent: { flex: 1, flexDirection: "row", justifyContent: 'space-between', backgroundColor: '#dfbe9f', padding: 5 }
 });
 
 const mapStateToProps = (state) => {

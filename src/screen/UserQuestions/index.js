@@ -8,9 +8,7 @@ import {
   Text,
   StyleSheet,
   FlatList,
-  TextInput,
-  TouchableOpacity,
-  SafeAreaView,
+  ScrollView,
 } from 'react-native';
 import Colors from '../../constant/Color';
 import Separator from '../../component/Separator/Separator'
@@ -30,7 +28,7 @@ handleListClick = (id, title, props) => () => {
 const UserQuestionsScreenView = ({ question, ...props }) => {
   console.log("question in user question : ", question)
   return (
-    <SafeAreaView style={styles.safeAreaContainer}>
+    <ScrollView style={styles.safeAreaContainer}>
       <View style={styles.container}>
         <View style={styles.headingSubContainer}>
           <Text style={styles.title}>User Questions</Text>
@@ -47,7 +45,7 @@ const UserQuestionsScreenView = ({ question, ...props }) => {
           keyExtractor={(list) => list.id}
         />
       </View>
-    </SafeAreaView>
+    </ScrollView>
   )
 };
 

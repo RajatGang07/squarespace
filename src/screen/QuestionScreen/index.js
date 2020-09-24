@@ -9,13 +9,11 @@ import styles from './styles';
 import { addQuestion } from '../../store/actions/questionAction';
 import Colors from '../../constant/Color';
 
-handleSubmit = (inputText, props, setInputText) => {
-    console.log(props, "props");
+handleSubmit = (inputText, props, setInputText) => () => {
     const { addQuestionAction } = props;
     addQuestionAction(inputText);
     setInputText("");
 };
-
 
 const QuestionScreenView = ({ ...props }) => {
     const [inputText, setInputText] = useState("");
@@ -26,18 +24,19 @@ const QuestionScreenView = ({ ...props }) => {
                     Do you want to ask any question?
                 </Text>
             </View>
-            <View style={{ padding: 10, flexDirection: "column" }}>
+            <View style={styles.askQuestion}>
+                
                 <TextInput
                     multiline={true}
                     numberOfLines={10}
                     style={{ height: 200, backgroundColor: Colors.palePurple }}
-                    onChangeText={(text) => setInputText(text)}
-                    onSubmitEditing={() => handleSubmit(inputText, props, setInputText)}
+                    onChangeText={setInputText}
+                    onSubmitEditing={ handleSubmit(inputText, props, setInputText)}
                     value={inputText}
                 />
             </View>
             <View>
-                <Button title="Submit" onPress={() => handleSubmit(inputText, props, setInputText)} />
+                <Button title="Submit" onPress={handleSubmit(inputText, props, setInputText)} />
             </View>
         </View>
     )

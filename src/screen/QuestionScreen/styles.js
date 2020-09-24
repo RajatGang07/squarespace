@@ -45,7 +45,8 @@ relatedTopics: {
 solutions: {
     fontSize: 16,
     padding: 10,
-}
+},
+askQuestion: { padding: 10, flexDirection: "column" }
  
 });
 

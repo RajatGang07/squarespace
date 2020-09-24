@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text,  TouchableOpacity } from 'react-native';
 
-import Colors from '../../constant/Color';
-import { deleteReview } from '../../store/actions/questionAction';
+import styles from './styles';
+import { deleteReview } from '../../../store/actions/questionAction';
 
 handleSwipeRight = (id, reviewId, deleteReviewAction) => () => {
     console.log(deleteReviewAction, "deleteReviewAction");
@@ -18,18 +18,7 @@ const DeleteReview = ({ id, reviewId, onPress, deleteReviewAction, ...props }) =
     );
 };
 
-const styles = StyleSheet.create({
-    rightAction: {
-        justifyContent: 'center',
-        alignItems: 'flex-end',
-        backgroundColor: Colors.red,
-        padding: 15,
-    },
-    rightActionText: {
-        color: Colors.white,
-        fontSize: 18,
-    },
-});
+
 
 
 export default connect(null, {

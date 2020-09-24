@@ -2,19 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import _get from 'lodash.get';
 
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { Avatar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { Colors } from '../styles/index';
-import { logOut } from '../store/actions/creadentialAction';
+import { Colors } from '../../styles/index';
+import styles from './styles';
+import { logOut } from '../../store/actions/creadentialAction';
 
 
-const DrawerNavigation = ({ userName, navigation, logOutAction, ...props }) => {
+const DrawerStack = ({ userName, navigation, logOutAction, ...restProps }) => {
     return (
         <View style={styles.container}>
-            <DrawerContentScrollView {...props}>
+            <DrawerContentScrollView >
                 <View style={styles.headerContainer}>
                     <TouchableOpacity
                         style={styles.menuIcon}
@@ -62,39 +63,7 @@ const DrawerNavigation = ({ userName, navigation, logOutAction, ...props }) => {
 }
 
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 10,
-    },
-    headerContainer: {
-        flexDirection: 'row',
-    },
-    heading: {
-        fontSize: 22,
-        fontWeight: '600',
-        marginLeft: 15,
-        marginBottom: 10,
-    },
-    userDetailsContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        padding: 5,
-    },
-    userDetailsItem: {
-        marginLeft: 5,
-        fontSize: 18,
-    },
-    drawerItem: {
-        borderRadius: 0,
-        borderBottomWidth: 1,
-        borderColor: Colors.lightestGrey,
-    },
-    drawerItemLabel: {
-        fontSize: 18,
-    },
-});
+
 
 const mapStateToProps = (state) => {
     const userName = _get(state, 'credential.userName');
@@ -105,4 +74,4 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
     logOutAction: logOut,
-})(DrawerNavigation);
+})(DrawerStack);

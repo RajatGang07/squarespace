@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'react-native';
 
-import { logOut } from '../../store/actions/creadentialAction';
+import { logOut } from '../../../store/actions/creadentialAction';
 
 const LogoutButton = ({ logOutAction,...props }) => {
   return <Button title="Logout" onPress={logOutAction} />;

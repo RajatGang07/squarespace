@@ -1,19 +1,15 @@
 import { StyleSheet } from 'react-native';
-import { colors } from '../../styles';
+import Colors from '../../constant/Color';
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    // backgroundColor: colors.welcomeScreen.background,
-    alignItems: 'center',
-    justifyContent: 'center',
+      flex: 1,
+      padding: 10,
   },
-  button: {
-    // backgroundColor: colors.white,
-    padding: 4,
-    marginTop: 16,
-    borderRadius: 4,
-  },
+  textStyle: {
+      color: Colors.slateBlue,
+      fontSize: 20,
+      marginVertical: 5,
+  }
 });
-
 export default styles;

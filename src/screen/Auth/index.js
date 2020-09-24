@@ -1,28 +1,21 @@
 import React from 'react';
-
 import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-
 import { connect } from 'react-redux';
 
 import SignIn from '../../screen/SignIn';
 import SignUp from '../../screen/SignUp';
-
 import { tryLocalSignIn } from '../../store/actions/creadentialAction';
-import BottomNavigator from '../../navigation/BottomNavigator';
 import DrawerNavigation from '../../navigation/DrawerNavigation';
+import RestorePasswordScreenView from '../RestorePasswordScreen/index';
 
 
 const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator();
 
 const Auth = ({ userToken, isSignout, ...props }) => {
+    // in a same stack
     if (userToken) {
         return (
-            <Drawer.Navigator
-            drawerContent={(props) => <DrawerNavigation {...props} />}>
-            <Drawer.Screen name="HomeDrawer" component={BottomNavigator} />
-        </Drawer.Navigator>
+            <DrawerNavigation  {...props} />
         );
     }
     return (
@@ -34,7 +27,7 @@ const Auth = ({ userToken, isSignout, ...props }) => {
             }}>
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="SignUp" component={SignUp} />
-            
+            <Stack.Screen name="RestorePassword" component={RestorePasswordScreenView} />
         </Stack.Navigator>
     )
 

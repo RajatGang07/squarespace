@@ -6,7 +6,7 @@ import _get from 'lodash.get';
 
 import Auth from './src/screen/Auth';
 
-const App = ({ ...props }) => {
+const App = () => {
   return (
     <NavigationContainer>
       <Auth />

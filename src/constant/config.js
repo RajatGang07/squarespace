@@ -3,15 +3,9 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Colors from './Color';
 
-export const SETTINGS_TAB = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({color, size}) => (
-    <Icon name="cog-outline" color={color} size={size} />
-  ),
-};
 
 export const QUESTION_TAB = {
-  tabBarLabel: 'Ask Question',
+  tabBarLabel: 'AskQuestion',
   tabBarIcon: ({color, size}) => (
     <Icon name="cog-outline" color={color} size={size} />
   ),

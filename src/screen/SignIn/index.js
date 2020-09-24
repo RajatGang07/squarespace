@@ -4,14 +4,17 @@ import { connect } from 'react-redux';
 import {
     View,
     Text,
-    StyleSheet,
     TextInput,
     Button,
     SafeAreaView,
 } from 'react-native';
 import { signIn } from '../../store/actions/creadentialAction';
 
-import { Colors } from '../../styles/index';
+import styles from './styles';
+
+const routing = navigation => route  => {
+    return navigation.navigate(route);
+}
 
 const SignInScreen = ({ signInAction, navigation, ...props }) => {
     const [username, setUsername] = useState('');
@@ -45,11 +48,11 @@ const SignInScreen = ({ signInAction, navigation, ...props }) => {
                         }
                     />
                     <View style={styles.footerContainer}>
-                        <Text onPress={() => navigation.navigate('SignUp')}>New User</Text>
+                        <Text onPress={routing('SignUp')}>New User</Text>
                     </View>
 
                     <View style={styles.footerContainer}>
-                        <Text onPress={() => navigation.navigate('RestorePassword')}>Forgot password</Text>
+                        <Text onPress={routing('RestorePassword')}>Forgot password</Text>
                     </View>
                 </View>
             </View>
@@ -57,42 +60,7 @@ const SignInScreen = ({ signInAction, navigation, ...props }) => {
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 10,
-    },
-    footerContainer: {
-        alignItems: 'center',
-    },
-    bodyContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        marginHorizontal: 50,
-    },
-    headingText: {
-        color: Colors.darkBlue,
-        marginBottom: 20,
-        textAlign: 'center',
-        fontSize: 22,
-        fontWeight: '600',
-    },
-    inputContainer: {
-        marginVertical: 5,
-        height: 45,
-    },
-    label: {
-        fontSize: 16,
-    },
-    textInput: {
-        borderRadius: 3,
-        flex: 1,
-        padding: 10,
-        fontSize: 16,
-        borderColor: Colors.ligthGrey,
-        borderWidth: 1,
-    },
-});
+
 
 export default connect(null, {
     signInAction: signIn,

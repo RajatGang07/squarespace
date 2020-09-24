@@ -1,24 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import _get from 'lodash.get';
-import { TouchableOpacity, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import UserQuestions from '../../screen/UserQuestions/index';
-import UserQuestionsList from '../../screen/DetailQuestion';
-
-import Colors from '../../constant/Color';
-
-import { logOut } from '../../store/actions/creadentialAction';
-import LogoutButton from '../atom/LogoutButton';
-import AboutUsScreenScreenView from '../../screen/AboutUsScreen/AboutUsScreenView';
+import styles from './styles';
+import UserQuestions from '../../../screen/UserQuestions';
+import UserQuestionsList from '../../../screen/DetailQuestion';
+import Colors from '../../../constant/Color';
+import LogoutButton from '../../atoms/LogoutButton';
+import AboutUsScreenScreenView from '../../../screen/AboutUsScreen';
 
 
 const Stack = createStackNavigator();
 
-const TodoStack = ({ loggedInUser, navigation, logOutAction, ...props }) => {
+const Home = ({...props }) => {
+  const {
+    loggedInUser, 
+    navigation,
+  } = props;
   return (
     <>
       <Stack.Navigator
@@ -39,7 +40,7 @@ const TodoStack = ({ loggedInUser, navigation, logOutAction, ...props }) => {
           headerRight: () => {
             return (
               <TouchableOpacity>
-                  <LogoutButton />
+                <LogoutButton />
               </TouchableOpacity>
             );
           },
@@ -59,7 +60,7 @@ const TodoStack = ({ loggedInUser, navigation, logOutAction, ...props }) => {
             title: route.params.title,
           })}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="AboutUs"
           component={AboutUsScreenScreenView}
         />
@@ -71,11 +72,7 @@ const TodoStack = ({ loggedInUser, navigation, logOutAction, ...props }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  menuIcon: {
-    marginLeft: 10,
-  },
-});
+
 
 const mapStateToProps = (state) => {
   const userName = _get(state, 'credential.userName');
@@ -84,6 +81,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {
-  logOutAction: logOut,
-})(TodoStack);
+export default connect(mapStateToProps, {})(Home);

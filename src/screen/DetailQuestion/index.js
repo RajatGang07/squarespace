@@ -7,7 +7,8 @@ import {
     FlatList,
     TextInput,
     Image,
-    ScrollView
+    ScrollView,
+    Button
 } from 'react-native';
 import { Swipeable } from 'react-native-gesture-handler';
 
@@ -121,16 +122,20 @@ const DetailQuestion = ({ ...props }) => {
                 <View style={{ flexDirection: "column" }}>
                     <Text style={styles.title}>Want to give solution?</Text>
                 </View>
-                <View style={{ padding: 10, flexDirection: "column" }}>
+                <View style={styles.solutionTextBoxParent}>
                     <TextInput
                         multiline={true}
                         numberOfLines={10}
                         style={styles.solutionTextBox}
                         onChangeText={setInputText}
-                        onSubmitEditing={handleSubmit(inputText, id, props, setInputText)}
                         value={inputText}
                     />
                 </View>
+
+                <View>
+                    <Button title="Submit" onPress={handleSubmit(inputText,id, props, setInputText)} />
+                </View>
+
 
             </View>
         </ScrollView>

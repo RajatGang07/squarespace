@@ -79,7 +79,8 @@ const styles = StyleSheet.create({
     solutionSubParent: { flexDirection: "row" },
     solAuthor: { justifyContent: 'flex-start' },
     dateSolParent: { flexDirection: "row" },
-    solutionTextBox: { height: 200, backgroundColor: Colors.palePurple }
+    solutionTextBox: { height: 200, backgroundColor: Colors.palePurple },
+    solutionTextBoxParent: { padding: 10, flexDirection: "column" }
 });
 
 export default styles;

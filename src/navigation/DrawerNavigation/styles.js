@@ -2,37 +2,44 @@ import {StyleSheet } from 'react-native';
 import { Colors } from '../../styles/index';
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 10,
+    drawerContent: {
+      flex: 1,
     },
-    headerContainer: {
-        flexDirection: 'row',
+    userInfoSection: {
+      paddingLeft: 20,
     },
-    heading: {
-        fontSize: 22,
-        fontWeight: '600',
-        marginLeft: 15,
-        marginBottom: 10,
+    title: {
+      marginTop: 20,
+      fontWeight: 'bold',
     },
-    userDetailsContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        padding: 5,
+    caption: {
+      fontSize: 14,
+      lineHeight: 14,
     },
-    userDetailsItem: {
-        marginLeft: 5,
-        fontSize: 18,
+    row: {
+      marginTop: 20,
+      flexDirection: 'row',
+      alignItems: 'center',
     },
-    drawerItem: {
-        borderRadius: 0,
-        borderBottomWidth: 1,
-        borderColor: Colors.lightestGrey,
+    section: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginRight: 15,
     },
-    drawerItemLabel: {
-        fontSize: 18,
+    paragraph: {
+      fontWeight: 'bold',
+      marginRight: 3,
     },
-});
+    drawerSection: {
+      marginTop: 15,
+    },
+    preference: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingVertical: 12,
+      paddingHorizontal: 16,
+    },
+  });
+  
 
 export default styles;

@@ -1,17 +1,15 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import { StackNavigator } from './stack';
-import { DrawerContent } from './drawerContent';
+import  StackNavigator  from '../StackNavigator';
+import DrawerContent  from '../DrawerNavigation';
 
 const Drawer = createDrawerNavigator();
 
 export const RootNavigator = () => {
   return (
-    <NavigationContainer theme={navigationTheme}>
       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
-        <Drawer.Screen name="Home" component={StackNavigator} />
+        <Drawer.Screen name="UserQuestions" component={StackNavigator} />
       </Drawer.Navigator>
-    </NavigationContainer>
   );
 };

@@ -2,11 +2,11 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { connect } from 'react-redux';
 
-import SignIn from '../../screen/SignIn';
-import SignUp from '../../screen/SignUp';
+import SignIn from 'screen/SignIn';
+import SignUp from 'screen/SignUp';
 import { tryLocalSignIn } from '../../store/actions/creadentialAction';
-import DrawerNavigation from '../../navigation/DrawerNavigation';
 import RestorePasswordScreenView from '../RestorePasswordScreen/index';
+import { RootNavigator } from '../../navigation/RootNavigator';
 
 
 const Stack = createStackNavigator();
@@ -15,7 +15,7 @@ const Auth = ({ userToken, isSignout, ...props }) => {
     // in a same stack
     if (userToken) {
         return (
-            <DrawerNavigation  {...props} />
+            <RootNavigator />
         );
     }
     return (

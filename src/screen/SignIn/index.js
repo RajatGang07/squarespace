@@ -12,7 +12,7 @@ import { signIn } from '../../store/actions/creadentialAction';
 
 import styles from './styles';
 
-const routing = navigation => route  => {
+const routing = (navigation, route) => ()  => {
     return navigation.navigate(route);
 }
 
@@ -48,11 +48,11 @@ const SignInScreen = ({ signInAction, navigation, ...props }) => {
                         }
                     />
                     <View style={styles.footerContainer}>
-                        <Text onPress={routing('SignUp')}>New User</Text>
+                        <Text onPress={routing(navigation, 'SignUp')}>New User</Text>
                     </View>
 
                     <View style={styles.footerContainer}>
-                        <Text onPress={routing('RestorePassword')}>Forgot password</Text>
+                        <Text onPress={routing(navigation, 'RestorePassword')}>Forgot password</Text>
                     </View>
                 </View>
             </View>

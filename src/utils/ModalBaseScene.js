@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import { Button, View } from 'react-native';
 
+import styles from './styles';
 
 class ModalBaseScene extends Component {
     constructor(props) {
@@ -28,12 +29,6 @@ class ModalBaseScene extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    view: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+
 
 export default ModalBaseScene;

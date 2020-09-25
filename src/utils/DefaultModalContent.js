@@ -1,7 +1,8 @@
 
 import React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {Button, Text, View} from 'react-native';
 
+import styles from './styles';
 
 const DefaultModalContent = props => (
   <View style={styles.content}>
@@ -10,19 +11,5 @@ const DefaultModalContent = props => (
   </View>
 );
 
-const styles = StyleSheet.create({
-  content: {
-    backgroundColor: 'white',
-    padding: 22,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 4,
-    borderColor: 'rgba(0, 0, 0, 0.1)',
-  },
-  contentTitle: {
-    fontSize: 20,
-    marginBottom: 12,
-  },
-});
 
 export default DefaultModalContent;

@@ -1,9 +1,9 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
 import Modal from 'react-native-modal';
 import ModalBaseScene from '../../utils/ModalBaseScene';
 import DefaultModalContent from '../../utils/DefaultModalContent';
 
+import styles from './styles';
 class AboutUsScreen extends ModalBaseScene {
   renderModal(){
     return (
@@ -19,11 +19,6 @@ class AboutUsScreen extends ModalBaseScene {
   }
 }
 
-const styles = StyleSheet.create({
-  view: {
-    justifyContent: 'flex-end',
-    margin: 0,
-  },
-});
+
 
 export default AboutUsScreen;

@@ -9,20 +9,27 @@ handleListClick = (id, title, props) => () => {
     navigation.navigate('UserQuestionsList', { id: id, title: title });
 };
 
-const QuestionList = ({ item, id, title, ...props }) => {
+const QuestionList = ({ ...props }) => {
     const relatedTopics = item.relatedTopics;
     const relatedTopicsArray = [];
     relatedTopics.map((item) => {
         relatedTopicsArray.push(<View style={styles.padding} key={item.id}><Text style={styles.relatedTopics}>{item.title}</Text></View>);
     })
 
-
+    const {
+        item, id, title
+    } = props;
+    const{
+        question,
+        date,
+        questAuthor
+    } = item;
     return (
         <SafeAreaView style={styles.safeAreaContainer}>
             <TouchableOpacity onPress={handleListClick(id, title, props)}>
                 <View>
                     <Text style={styles.textStyle}>
-                        {item.question}
+                        {question}
                     </Text>
                 </View>
 
@@ -32,10 +39,10 @@ const QuestionList = ({ item, id, title, ...props }) => {
 
                 <View style={styles.dateAuthorName}>
                     <View style={styles.padding}>
-                        <Text style={styles.date}>{item.date}</Text>
+                        <Text style={styles.date}>{date}</Text>
                     </View>
                     <View style={styles.authorParent}>
-                        <Text>By{' '}</Text><Text style={styles.questAuthor}>{item.questAuthor}</Text>
+                        <Text>By{' '}</Text><Text style={styles.questAuthor}>{questAuthor}</Text>
                     </View>
 
                 </View>

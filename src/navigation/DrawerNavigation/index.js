@@ -19,6 +19,7 @@ import Animated from 'react-native-reanimated';
 
 import { logOut } from '../../store/actions/creadentialAction';
 import styles from './styles';
+import { getUserToken, getSignOutValue } from '../../store/selectors/credentialSelectors';
 
 
 const routing = (navigation, route) => () => {
@@ -99,9 +100,11 @@ const DrawerContent = ({ userName, navigation, logOutAction, ...props }) => {
 
 
 const mapStateToProps = (state) => {
-  const userName = _get(state, 'credential.userName');
+  const userToken = getUserToken(state);
+  const isSignout = getSignOutValue(state);
   return {
-    userName,
+    userToken,
+    isSignout,
   };
 };
 

@@ -1,7 +1,5 @@
 import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { connect } from 'react-redux';
-import _get from 'lodash.get';
 
 import UserQuestions from '../../screen/UserQuestions';
 import QuestionScreenContainer from '../../screen/QuestionScreen';
@@ -50,12 +48,5 @@ const BottomTabs = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  const userName = _get(state, 'credential.userName');
-  return {
-      userName,
-  };
-};
 
-export default connect(mapStateToProps, {
-})(BottomTabs);
+export default BottomTabs;

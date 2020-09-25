@@ -10,6 +10,7 @@ import AboutUs from '../../screen/AboutUsScreen';
 import UserQuestionsList from '../../screen/DetailQuestion';
 import Scrollable from '../../screen/Modal/Scrollable';
 import BackdropCloseModal from '../../screen/Modal/BackdropCloseModal';
+import { getUserToken, getSignOutValue } from '../../store/selectors/credentialSelectors';
 
 
 const Stack = createStackNavigator();
@@ -107,9 +108,11 @@ const StackNavigator = ({userName}) => {
 };
 
 const mapStateToProps = (state) => {
-  const userName = _get(state, 'credential.userName');
+  const userToken = getUserToken(state);
+  const isSignout = getSignOutValue(state);
   return {
-    userName,
+    userToken,
+    isSignout,
   };
 };
 

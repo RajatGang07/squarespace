@@ -10,8 +10,8 @@ import {
 } from 'react-native';
 
 import styles from './styles';
-import Separator from '../../component/molecules/Separator'
-import QuestionList from '../../component/atoms/QuestionList';
+import Separator from 'components/molecules/Separator'
+import QuestionList from 'components/atoms/QuestionList';
 
 handleSubmit = (inputText, props, setInputText) => {
   const { addListAction } = props;

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import _get from 'lodash.get';
 
 
-import Auth from './src/screen/Auth';
+import Auth from 'screen/Auth';
 
 const App = () => {
   return (

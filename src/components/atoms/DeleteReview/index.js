@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Text,  TouchableOpacity } from 'react-native';
 
 import styles from './styles';
-import { deleteReview } from '../../../store/actions/questionAction';
+import { deleteReview } from 'store/actions/questionAction';
 
 handleSwipeRight = (id, reviewId, deleteReviewAction) => () => {
     console.log(deleteReviewAction, "deleteReviewAction");

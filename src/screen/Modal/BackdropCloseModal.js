@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Modal from 'react-native-modal';
-import ModalBaseScene from '../../utils/ModalBaseScene';
-import DefaultModalContent from '../../utils/DefaultModalContent';
+import ModalBaseScene from 'utils/ModalBaseScene';
+import DefaultModalContent from 'utils/DefaultModalContent';
 
 class BackdropCloseModal extends ModalBaseScene {
   renderModal() {

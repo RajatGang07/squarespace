@@ -1,10 +1,9 @@
 import React from 'react';
-import {ScrollView, Text, View,TouchableWithoutFeedback} from 'react-native';
+import {ScrollView, Text, View, TouchableWithoutFeedback} from 'react-native';
 import Modal from 'react-native-modal';
-import ModalBaseScene from '../../utils/ModalBaseScene';
+import ModalBaseScene from 'utils/ModalBaseScene';
 import {Dimensions} from 'react-native';
 import styles from './styles';
-
 
 class Scrollable extends ModalBaseScene {
   constructor(props) {
@@ -14,7 +13,7 @@ class Scrollable extends ModalBaseScene {
       window: '',
       screenHeight: '',
       screenWidth: '',
-      showCloseBar: true
+      showCloseBar: true,
     });
 
     this.scrollViewRef = React.createRef();
@@ -49,7 +48,7 @@ class Scrollable extends ModalBaseScene {
   };
 
   renderModal() {
-    const {fullScreen,showCloseBar} = this.state;
+    const {fullScreen, showCloseBar} = this.state;
 
     console.log(this.state);
     return (
@@ -64,27 +63,24 @@ class Scrollable extends ModalBaseScene {
         propagateSwipe={true}
         style={styles.modal}
         animationType="slide"
-        bounces={false}
-        >
+        bounces={false}>
         <View
           style={[
             fullScreen
               ? {height: this.state.screenHeight - 200}
               : styles.scrollableModal,
           ]}>
+          {
+            <TouchableWithoutFeedback onPress={this.onClose}>
+              <View style={styles.closeBarContainer}>
+                <View style={styles.closeBar} />
+              </View>
+            </TouchableWithoutFeedback>
+          }
           <ScrollView
             ref={this.scrollViewRef}
             onScroll={this.handleOnScroll}
             scrollEventThrottle={16}>
-            {(
-              <TouchableWithoutFeedback onPress={this.onClose}>
-                <View style={styles.closeBarContainer}>
-                  <View style={styles.closeBar} />
-                  <Text style={{fontSize: 24}}>Click on me</Text>
-                </View>
-              </TouchableWithoutFeedback>
-            )}
-
             {/* {/* <View style={styles.scrollableModalContent1}>
               <Text style={styles.scrollableModalText1}>
                 You can scroll me up! 👆
@@ -105,14 +101,12 @@ class Scrollable extends ModalBaseScene {
             </View>
             <View style={styles.scrollableModalContent1}>
               <Text style={styles.scrollableModalText1}>Game over ☝</Text>
-            </View> 
+            </View>
           </ScrollView>
         </View>
       </Modal>
     );
   }
 }
-
-
 
 export default Scrollable;

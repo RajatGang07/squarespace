@@ -12,10 +12,10 @@ import {
 } from 'react-native';
 import { Swipeable } from 'react-native-gesture-handler';
 
-import Separator from '../../component/molecules/Separator';
+import Separator from 'components/molecules/Separator';
 import styles from './styles';
-import { addSolution, deleteReview } from '../../store/actions/questionAction';
-import DeleteReview from '../../component/atoms/DeleteReview';
+import { addSolution, deleteReview } from 'store/actions/questionAction';
+import DeleteReview from 'components/atoms/DeleteReview';
 
 
 

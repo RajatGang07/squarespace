@@ -6,8 +6,8 @@ import T from 'prop-types';
 import { View, TextInput, Text, Button } from 'react-native';
 import styles from './styles';
 
-import { addQuestion } from '../../store/actions/questionAction';
-import Colors from '../../constant/Color';
+import { addQuestion } from 'store/actions/questionAction';
+import Colors from 'constant/Color';
 
 handleSubmit = (inputText, props, setInputText) => () => {
     const { addQuestionAction } = props;

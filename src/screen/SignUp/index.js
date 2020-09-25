@@ -8,7 +8,7 @@ import {
     SafeAreaView,
 } from 'react-native';
 
-import { signUp } from '../../store/actions/creadentialAction';
+import { signUp } from 'store/actions/creadentialAction';
 import styles from './styles';
 
 const SignUpScreen = ({ signUpAction, navigation, ...props }) => {

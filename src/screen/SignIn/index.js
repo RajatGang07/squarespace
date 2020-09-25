@@ -8,7 +8,7 @@ import {
     Button,
     SafeAreaView,
 } from 'react-native';
-import { signIn } from '../../store/actions/creadentialAction';
+import { signIn } from 'store/actions/creadentialAction';
 
 import styles from './styles';
 

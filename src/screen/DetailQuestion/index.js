@@ -16,6 +16,7 @@ import Separator from 'components/molecules/Separator';
 import styles from './styles';
 import { addSolution, deleteReview } from 'store/actions/questionAction';
 import DeleteReview from 'components/atoms/DeleteReview';
+import { getQuestionList } from '../../store/selectors/questionSelector';
 
 
 
@@ -145,11 +146,12 @@ const DetailQuestion = ({ ...props }) => {
 
 
 const mapStateToProps = (state) => {
-    const question = _get(state, 'question.question');
+    const question = getQuestionList(state);
     return {
-        question: question,
+      question: question,
     };
-};
+  };
+  
 
 export default connect(mapStateToProps, {
     addSolutionAction: addSolution,

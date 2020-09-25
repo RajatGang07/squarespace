@@ -12,6 +12,7 @@ import {
 import styles from './styles';
 import Separator from 'components/molecules/Separator'
 import QuestionList from 'components/atoms/QuestionList';
+import { getQuestionList } from '../../store/selectors/questionSelector';
 
 handleSubmit = (inputText, props, setInputText) => {
   const { addListAction } = props;
@@ -24,7 +25,10 @@ handleListClick = (id, title, props) => () => {
   navigation.navigate('UserQuestionsList', { id: id, title: title });
 };
 
+
 const UserQuestionsScreenView = ({ question, ...props }) => {
+  console.log(question, "question");
+
   return (
     <View style={styles.safeAreaContainer}>
       <View style={styles.container}>
@@ -56,7 +60,7 @@ UserQuestionsScreenView.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const question = _get(state, 'question.question');
+  const question = getQuestionList(state);
   return {
     question: question,
   };

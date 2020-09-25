@@ -7,11 +7,13 @@ import SignUp from 'screen/SignUp';
 import { tryLocalSignIn } from 'store/actions/creadentialAction';
 import RestorePasswordScreenView from 'screen/RestorePasswordScreen/index';
 import { RootNavigator } from 'navigation/RootNavigator';
+import { getUserToken, getSignOutValue } from '../../store/selectors/credentialSelectors';
 
 
 const Stack = createStackNavigator();
 
 const Auth = ({ userToken, isSignout, ...props }) => {
+    console.log(userToken, "userToken");
     // in a same stack
     if (userToken) {
         return (
@@ -34,13 +36,14 @@ const Auth = ({ userToken, isSignout, ...props }) => {
 }
 
 const mapStateToProps = (state) => {
-    const { userToken, isSignout } = state.credential;
-
+    const userToken = getUserToken(state);
+    const isSignout = getSignOutValue(state);
     return {
-        userToken,
-        isSignout,
+      userToken,
+      isSignout,
     };
-};
+  };
+
 
 export default connect(mapStateToProps, {
     tryLocalSignInAction: tryLocalSignIn,

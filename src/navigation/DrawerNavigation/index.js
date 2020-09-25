@@ -17,11 +17,20 @@ import {
 } from 'react-native-paper';
 import Animated from 'react-native-reanimated';
 
-import {logOut} from '../../store/actions/creadentialAction';
+import { logOut } from '../../store/actions/creadentialAction';
 import styles from './styles';
 
-const DrawerContent = ({ userName, navigation, logOutAction, ...props }) => {
 
+const routing = (navigation, route) => () => {
+  return navigation.navigate(route);
+}
+
+const logoutUser = (logOutAction) => () => {
+  logOutAction();
+}
+
+
+const DrawerContent = ({ userName, navigation, logOutAction, ...props }) => {
 
   return (
     <DrawerContentScrollView {...props}>
@@ -34,10 +43,8 @@ const DrawerContent = ({ userName, navigation, logOutAction, ...props }) => {
               props.navigation.toggleDrawer();
             }}
           >
-            <Avatar.Image
-              source={{ uri: 'https://pbs.twimg.com/profile_images/952545910990495744/b59hSXUd_400x400.jpg' }}
-              size={50}
-            />
+            <Avatar.Icon size={50} icon="alien" />
+
           </TouchableOpacity>
           <Title style={styles.title}>{userName}</Title>
           <Caption style={styles.caption}>gamer</Caption>
@@ -59,31 +66,31 @@ const DrawerContent = ({ userName, navigation, logOutAction, ...props }) => {
               <Icon name="home-outline" color={color} size={size} />
             )}
             label="About Us"
-            onPress={() => { navigation.navigate('AboutUs') }}
+            onPress={routing(navigation, 'AboutUs')}
           />
           <DrawerItem
             icon={({ color, size }) => (
               <Icon name="home-outline" color={color} size={size} />
             )}
-            label="Preferences"
-            onPress={() => { }}
+            label="Scrollable Modal"
+            onPress={routing(navigation, 'Scrollable')}
           />
           <DrawerItem
             icon={({ color, size }) => (
               <Icon name="home-outline" color={color} size={size} />
             )}
-            label="Bookmarks"
-            onPress={() => { }}
+            label="Backdrop Close Modal"
+            onPress={routing(navigation, 'BackdropCloseModal')}
           />
         </Drawer.Section>
 
         <DrawerItem
-                label="Logout"
-                icon={({ color, size }) => (
-                    <Icon name="exit-to-app" color={color} size={size} />
-                )}
-                onPress={() => logOutAction()}
-            />
+          label="Logout"
+          icon={({ color, size }) => (
+            <Icon name="exit-to-app" color={color} size={size} />
+          )}
+          onPress={logoutUser(logOutAction)}
+        />
       </Animated.View>
     </DrawerContentScrollView>
   );

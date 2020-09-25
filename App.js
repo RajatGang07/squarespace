@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { connect } from 'react-redux';
 import _get from 'lodash.get';
 
+
 import Auth from './src/screen/Auth';
 
 const App = () => {
